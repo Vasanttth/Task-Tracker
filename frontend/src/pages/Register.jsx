@@ -79,7 +79,7 @@ export default function Register() {
     setLoading(true);
     try {
       await axios.post("https://task-tracker-f2t1.onrender.com/api/auth/register", form);
-      navigate("/");
+      navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed. Please try again.");
     } finally {
