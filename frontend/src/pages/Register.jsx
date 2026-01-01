@@ -78,7 +78,7 @@ export default function Register() {
 
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/auth/register", form);
+      await axios.post("https://task-tracker-sm7e.onrender.com/api/auth/register", form);
       navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed. Please try again.");
@@ -648,7 +648,7 @@ export default function Register() {
                       </Button>
                     </Stack>
 
-\
+
                     <Box textAlign="center" mt={2}>
                       <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
                         Already have an account?{" "}

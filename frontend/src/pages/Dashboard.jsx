@@ -52,11 +52,11 @@ export default function Dashboard() {
 
   const loadData = async () => {
     const userRes = await axios.get(
-      "http://localhost:5000/api/user/profile",
+      "https://task-tracker-sm7e.onrender.com/api/user/profile",
       { headers }
     );
     const taskRes = await axios.get(
-      "http://localhost:5000/api/tasks",
+      "https://task-tracker-sm7e.onrender.com/api/tasks",
       { headers }
     );
     setProfile(userRes.data);
@@ -70,7 +70,7 @@ export default function Dashboard() {
   const addTask = async () => {
     if (!title.trim()) return;
     await axios.post(
-      "http://localhost:5000/api/tasks",
+      "https://task-tracker-sm7e.onrender.com/api/tasks",
       { title },
       { headers }
     );
@@ -80,7 +80,7 @@ export default function Dashboard() {
 
   const deleteTask = async (id) => {
     await axios.delete(
-      `http://localhost:5000/api/tasks/${id}`,
+      `https://task-tracker-sm7e.onrender.com/api/tasks/${id}`,
       { headers }
     );
     loadData();
@@ -94,7 +94,7 @@ export default function Dashboard() {
   const updateTask = async () => {
     if (!editTask.title.trim()) return;
     await axios.put(
-      `http://localhost:5000/api/tasks/${editTask.id}`,
+      `https://task-tracker-sm7e.onrender.com/api/tasks/${editTask.id}`,
       { title: editTask.title },
       { headers }
     );
@@ -147,7 +147,6 @@ export default function Dashboard() {
         }}
       >
         <Container maxWidth="xl" sx={{ py: { xs: 3, sm: 5, md: 6 }, position: "relative", zIndex: 1 }}>
-          {/* Premium Header Section */}
           <Fade in timeout={1000}>
             <Box mb={{ xs: 4, sm: 6 }}>
               <Stack 
