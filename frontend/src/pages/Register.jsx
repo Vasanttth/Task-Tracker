@@ -78,7 +78,7 @@ export default function Register() {
 
     setLoading(true);
     try {
-      await axios.post("https://task-tracker-sm7e.onrender.com/api/auth/register", form);
+      await axios.post("https://task-tracker-f2t1.onrender.com/api/auth/register", form);
       navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed. Please try again.");

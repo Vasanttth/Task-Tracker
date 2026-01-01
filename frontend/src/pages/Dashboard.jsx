@@ -52,11 +52,11 @@ export default function Dashboard() {
 
   const loadData = async () => {
     const userRes = await axios.get(
-      "https://task-tracker-sm7e.onrender.com/api/user/profile",
+      "https://task-tracker-f2t1.onrender.com/api/user/profile",
       { headers }
     );
     const taskRes = await axios.get(
-      "https://task-tracker-sm7e.onrender.com/api/tasks",
+      "https://task-tracker-f2t1.onrender.com/api/tasks",
       { headers }
     );
     setProfile(userRes.data);
@@ -70,7 +70,7 @@ export default function Dashboard() {
   const addTask = async () => {
     if (!title.trim()) return;
     await axios.post(
-      "https://task-tracker-sm7e.onrender.com/api/tasks",
+      "https://task-tracker-f2t1.onrender.com/api/tasks",
       { title },
       { headers }
     );
@@ -80,7 +80,7 @@ export default function Dashboard() {
 
   const deleteTask = async (id) => {
     await axios.delete(
-      `https://task-tracker-sm7e.onrender.com/api/tasks/${id}`,
+      `https://task-tracker-f2t1.onrender.com/api/tasks/${id}`,
       { headers }
     );
     loadData();
@@ -94,7 +94,7 @@ export default function Dashboard() {
   const updateTask = async () => {
     if (!editTask.title.trim()) return;
     await axios.put(
-      `https://task-tracker-sm7e.onrender.com/api/tasks/${editTask.id}`,
+      `https://task-tracker-f2t1.onrender.com/api/tasks/${editTask.id}`,
       { title: editTask.title },
       { headers }
     );

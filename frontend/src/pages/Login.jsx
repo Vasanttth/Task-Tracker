@@ -89,7 +89,7 @@ export default function Login() {
     try {
       const endpoint = isLogin ? "/api/auth/login" : "/api/auth/register";
       const response = await axios.post(
-        `https://task-tracker-sm7e.onrender.com${endpoint}`,
+        `https://task-tracker-f2t1.onrender.com${endpoint}`,
         formData
       );
 
