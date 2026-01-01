@@ -10,7 +10,7 @@ app.use(express.json());
 
 
 mongoose
-  .connect("mongodb+srv://vasanthansanthavel_db_user:Vasanth@6@cluster0.kofzzkc.mongodb.net/?appName=Cluster0")
+  .connect("mongodb+srv://vasanthansanthavel_db_user:vasanth6@cluster0.kofzzkc.mongodb.net/tasktracker")
   .then(() => console.log("MongoDB Connected"))
   .catch((err) => console.error(err));
 
