@@ -52,17 +52,20 @@ export default function Register() {
   const submit = async () => {
     setError("");
 
+    
     if (!form.name || !form.email || !form.password) {
       setError("Please fill in all fields");
       return;
     }
 
+    
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(form.email)) {
       setError("Please enter a valid email address");
       return;
     }
 
+    
     if (form.password.length < 6) {
       setError("Password must be at least 6 characters long");
       return;
@@ -75,24 +78,10 @@ export default function Register() {
 
     setLoading(true);
     try {
-      await axios.post(
-        "https://task-tracker-f2t1.onrender.com/api/auth/register",
-        form
-      );
-      const loginRes = await axios.post(
-        "https://task-tracker-f2t1.onrender.com/api/auth/login",
-        {
-          email: form.email,
-          password: form.password,
-        }
-      );
-
-      localStorage.setItem("token", loginRes.data.token); // store token
-      navigate("/dashboard"); // go to protected page
+      await axios.post("https://task-tracker-f2t1.onrender.com/api/auth/register", form);
+      navigate("/");
     } catch (err) {
-      setError(
-        err.response?.data?.message || "Registration failed. Please try again."
-      );
+      setError(err.response?.data?.message || "Registration failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -102,8 +91,7 @@ export default function Register() {
     <Box
       sx={{
         minHeight: "100vh",
-        background:
-          "linear-gradient(140deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
+        background: "linear-gradient(140deg, #0f0c29 0%, #302b63 50%, #24243e 100%)",
         position: "relative",
         overflow: "hidden",
         "&::before": {
@@ -111,8 +99,7 @@ export default function Register() {
           position: "absolute",
           width: "800px",
           height: "800px",
-          background:
-            "radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 70%)",
           borderRadius: "50%",
           top: "-200px",
           right: "-200px",
@@ -123,8 +110,7 @@ export default function Register() {
           position: "absolute",
           width: "600px",
           height: "600px",
-          background:
-            "radial-gradient(circle, rgba(30, 144, 255, 0.12) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(30, 144, 255, 0.12) 0%, transparent 70%)",
           borderRadius: "50%",
           bottom: "-150px",
           left: "-150px",
@@ -150,6 +136,7 @@ export default function Register() {
           justifyContent="center"
           spacing={4}
         >
+          
           <Grid
             item
             md={6}
@@ -159,14 +146,14 @@ export default function Register() {
           >
             <Fade in timeout={1000}>
               <Box px={6}>
+
                 <Zoom in timeout={1200}>
                   <Box
                     sx={{
                       width: 120,
                       height: 120,
                       borderRadius: 5,
-                      background:
-                        "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                      background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "center",
@@ -187,8 +174,7 @@ export default function Register() {
                   variant="h2"
                   fontWeight={800}
                   sx={{
-                    background:
-                      "linear-gradient(135deg, #fff 0%, #e0e7ff 100%)",
+                    background: "linear-gradient(135deg, #fff 0%, #e0e7ff 100%)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
@@ -208,10 +194,10 @@ export default function Register() {
                     lineHeight: 1.6,
                   }}
                 >
-                  Start your journey to extraordinary productivity and seamless
-                  task management
+                  Start your journey to extraordinary productivity and seamless task management
                 </Typography>
 
+                
                 <Stack spacing={3}>
                   {[
                     {
@@ -231,9 +217,7 @@ export default function Register() {
                     },
                   ].map((feature, index) => (
                     <Grow in timeout={1400 + index * 200} key={index}>
-                      <Box
-                        sx={{ display: "flex", alignItems: "center", gap: 2 }}
-                      >
+                      <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
                         <Box
                           sx={{
                             width: 56,
@@ -273,6 +257,7 @@ export default function Register() {
             </Fade>
           </Grid>
 
+          
           <Grid item xs={12} sm={10} md={6} lg={5}>
             <Grow in timeout={800}>
               <Card
@@ -306,48 +291,33 @@ export default function Register() {
                 }}
               >
                 <CardContent sx={{ p: { xs: 3, sm: 5 } }}>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: 2,
-                      mb: 4,
-                    }}
-                  >
+                  
+                  <Box sx={{ display: "flex", alignItems: "center", gap: 2, mb: 4 }}>
                     <Box
                       sx={{
                         width: 48,
                         height: 48,
                         borderRadius: 2.5,
-                        background:
-                          "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                         display: "flex",
                         alignItems: "center",
                         justifyContent: "center",
                         boxShadow: "0 8px 24px rgba(102, 126, 234, 0.4)",
                       }}
                     >
-                      <PersonAddOutlinedIcon
-                        sx={{ color: "#fff", fontSize: 28 }}
-                      />
+                      <PersonAddOutlinedIcon sx={{ color: "#fff", fontSize: 28 }} />
                     </Box>
                     <Box>
-                      <Typography
-                        variant="h5"
-                        fontWeight={700}
-                        sx={{ color: "#fff", mb: 0.5 }}
-                      >
+                      <Typography variant="h5" fontWeight={700} sx={{ color: "#fff", mb: 0.5 }}>
                         Create Account
                       </Typography>
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "rgba(255, 255, 255, 0.6)" }}
-                      >
+                      <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
                         Join us and start your journey
                       </Typography>
                     </Box>
                   </Box>
 
+                  
                   {error && (
                     <Fade in>
                       <Alert
@@ -368,7 +338,9 @@ export default function Register() {
                     </Fade>
                   )}
 
+                  
                   <Stack spacing={3}>
+                    
                     <TextField
                       fullWidth
                       label="Full Name"
@@ -419,6 +391,7 @@ export default function Register() {
                       }}
                     />
 
+                    
                     <TextField
                       fullWidth
                       label="Email Address"
@@ -470,6 +443,7 @@ export default function Register() {
                       }}
                     />
 
+                    
                     <TextField
                       fullWidth
                       label="Password"
@@ -492,11 +466,7 @@ export default function Register() {
                               edge="end"
                               sx={{ color: "rgba(255, 255, 255, 0.6)" }}
                             >
-                              {showPassword ? (
-                                <VisibilityOff />
-                              ) : (
-                                <Visibility />
-                              )}
+                              {showPassword ? <VisibilityOff /> : <Visibility />}
                             </IconButton>
                           </InputAdornment>
                         ),
@@ -536,6 +506,7 @@ export default function Register() {
                       }}
                     />
 
+                    
                     <FormControlLabel
                       control={
                         <Checkbox
@@ -553,10 +524,7 @@ export default function Register() {
                         />
                       }
                       label={
-                        <Typography
-                          variant="body2"
-                          sx={{ color: "rgba(255, 255, 255, 0.6)" }}
-                        >
+                        <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
                           I accept the{" "}
                           <Link
                             href="#"
@@ -576,6 +544,7 @@ export default function Register() {
                       }
                     />
 
+                    
                     <Button
                       fullWidth
                       size="large"
@@ -583,8 +552,7 @@ export default function Register() {
                       disabled={loading}
                       onClick={submit}
                       sx={{
-                        background:
-                          "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+                        background: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
                         color: "#fff",
                         fontWeight: 700,
                         borderRadius: 3,
@@ -606,8 +574,7 @@ export default function Register() {
                           transition: "left 0.5s",
                         },
                         "&:hover": {
-                          background:
-                            "linear-gradient(135deg, #7c91f7 0%, #8a5cb5 100%)",
+                          background: "linear-gradient(135deg, #7c91f7 0%, #8a5cb5 100%)",
                           transform: "translateY(-2px)",
                           boxShadow: "0 12px 32px rgba(102, 126, 234, 0.5)",
                           "&::before": {
@@ -626,14 +593,13 @@ export default function Register() {
                       {loading ? "Creating Account..." : "Create Account"}
                     </Button>
 
+
                     <Divider sx={{ my: 1 }}>
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "rgba(255, 255, 255, 0.5)", px: 2 }}
-                      >
+                      <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.5)", px: 2 }}>
                         or sign up with
                       </Typography>
                     </Divider>
+
 
                     <Stack direction="row" spacing={2}>
                       <Button
@@ -682,11 +648,9 @@ export default function Register() {
                       </Button>
                     </Stack>
 
+
                     <Box textAlign="center" mt={2}>
-                      <Typography
-                        variant="body2"
-                        sx={{ color: "rgba(255, 255, 255, 0.6)" }}
-                      >
+                      <Typography variant="body2" sx={{ color: "rgba(255, 255, 255, 0.6)" }}>
                         Already have an account?{" "}
                         <Link
                           component="button"
